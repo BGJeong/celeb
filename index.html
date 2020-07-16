@@ -75,6 +75,12 @@
             </div>
             <div class="file-upload-content">
                 <img class="file-upload-image" id="face-image" src="#" alt="your image" />
+                <div id="loading" class="animated bounce">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <p class="text-center">분석중</p>
+                </div>
                 <p class="result-message"></p>
                 <div id="label-container"></div>
                 <div class="image-title-wrap">
@@ -111,6 +117,7 @@
 
                     reader.onload = function (e) {
                         $('.image-upload-wrap').hide();
+                        $('#loading').show();
                         $('.file-upload-image').attr('src', e.target.result);
                         $('.file-upload-content').show();
                         $('.image-title').html(input.files[0].name);
@@ -118,6 +125,7 @@
                     reader.readAsDataURL(input.files[0]);
                     init().then(function(){
                         predict();
+                        $('#loading').hide();
                     });
                     } else {
                         removeUpload();
@@ -292,8 +300,9 @@
                 $('.result-message').html('')
                 for (let i = 0; i < 4; i++) {
                     const classPrediction =
-                        (i+1)+'번째로 닮은 사람은 '+prediction[i].className+'이며 비율은'+ prediction[i].probability.toFixed(2);
+                        (i+1)+'번째로 닮은 사람은 '+prediction[i].className+'이며 비율은'+ prediction[i].probability.toFixed(2)*100+'%';
                     labelContainer.childNodes[i].innerHTML = classPrediction;
+                    console.log(classPrediction);
                 }
             }
         </script>

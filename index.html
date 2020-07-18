@@ -15,6 +15,15 @@
 
         <title>확인점부탁드림니다</title>
         <link rel="stylesheet" href="style.css" />
+        <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-145482737-6');
+    </script>
     </head>
 
     <body>
@@ -75,7 +84,7 @@
             <div class="file-upload-content">
                 <img class="file-upload-image" id="face-image" src="#" alt="your image" />
                 <div id="loading" class="animated bounce">
-                    <div class="spinner-border" role="status">
+                    <div class="spinner-border text-success m-5" role="status">
                         <span class="sr-only">Loading...</span>
                     </div>
                     <p class="text-center">분석중</p>
@@ -84,15 +93,22 @@
                 <p class="result-message"></p>
                 <div id="label-container"></div>
                 <div class="image-title-wrap">
-                    <button type="button" onclick="removeUpload()" class="remove-image mt-3">
+                    <button type="button" onclick="gaReload()" class="remove-image mt-3">
                         다른사진으로 재시도
                     </button>
                 </div>
             </div>
         </div>
-        <div id="webcam-container"></div>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script>
+            function gaReload() {
+                gtag('event', '다른 사진으로 재시도', {
+                    'event_category': '다른 사진으로 재시도'
+                });
+                window.location.reload();
+            }
+        </script>
         <script
             src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -117,6 +133,7 @@
 
                     reader.onload = function (e) {
                         $('.image-upload-wrap').hide();
+                        $('.progress').hide();
                         $('#loading').show();
                         $('.file-upload-image').attr('src', e.target.result);
                         $('.file-upload-content').show();
@@ -186,151 +203,151 @@
                         resultImage = "heechul"
                         break;
                     case "RM":
-                        resultMessage="RM을 닮으셨군요"
+                        resultMessage="당신은 RM을 닮으셨군요"
                         resultImage = "rm"
                         break;
                     case "장동건":
-                        resultMessage="장동건을 닮으셨군요"
+                        resultMessage="당신은 장동건을 닮으셨군요"
                         resultImage ="donggun"
                         break;
                     case "김우빈":
-                        resultMessage="김우빈을 닮으셨군요"
+                        resultMessage="당신은 김우빈을 닮으셨군요"
                         resultImage ="woobin"
                         break;
                     case "슈가":
-                        resultMessage="슈가를 닮으셨군요"
+                        resultMessage="당신은 슈가를 닮으셨군요"
                         resultImage ="sugar"
                         break;
                     case "강승윤":
-                        resultMessage="강승윤을 닮으셨군요"
+                        resultMessage="당신은 강승윤을 닮으셨군요"
                         resultImage ="seungyoon"
                         break;
                     case "노홍철":
-                        resultMessage="노홍철을 닮으셨군요"
+                        resultMessage="당신은 노홍철을 닮으셨군요"
                         resultImage ="hongchul"
                         break;
                     case "유노윤호":
-                        resultMessage="유노윤호를 닮으셨군요"
+                        resultMessage="당신은 유노윤호를 닮으셨군요"
                         resultImage ="unow"
                         break;
                     case "제이홉":
-                        resultMessage="제이홉을 닮으셨군요"
+                        resultMessage="당신은 제이홉을 닮으셨군요"
                         resultImage ="jhop"
                         break;
                     case "헨리":
-                        resultMessage="헨리를 닮으셨군요"
+                        resultMessage="당신은 헨리를 닮으셨군요"
                         resultImage ="henry"
                         break;
                     case "지민":
-                        resultMessage="지민을 닮으셨군요"
+                        resultMessage="당신은 지민을 닮으셨군요"
                         resultImage ="jimin"
                         break;
                     case "닉쿤":
-                        resultMessage="닉쿤을 닮으셨군요"
+                        resultMessage="당신은 닉쿤을 닮으셨군요"
                         resultImage ="khun"
                         break;
                     case "지드래곤":
-                        resultMessage="지드래곤을 닮으셨군요"
+                        resultMessage="당신은 지드래곤을 닮으셨군요"
                         resultImage ="gd"
                         break;
                     case "규현":
-                        resultMessage="규현을 닮으셨군요"
+                        resultMessage="당신은 규현을 닮으셨군요"
                         resultImage ="kyuhyun"
                         break;
                     case "찬열":
-                        resultMessage="찬열을 닮으셨군요"
+                        resultMessage="당신은 찬열을 닮으셨군요"
                         resultImage = "chanyeol"
                         break;
                     case "바비":
-                        resultMessage="바비을 닮으셨군요"
+                        resultMessage="당신은 바비를 닮으셨군요"
                         resultImage ="bobby"
                         break;
                     case "준호":
-                        resultMessage="준호을 닮으셨군요"
+                        resultMessage="당신은 준호를 닮으셨군요"
                         resultImage ="junho"
                         break;
                     case "세훈":
-                        resultMessage="세훈을 닮으셨군요"
+                        resultMessage="당신은 세훈을 닮으셨군요"
                         resultImage = "sehun"
                         break;
                     case "비":
-                        resultMessage="비를 닮으셨군요"
+                        resultMessage="당신은 비를 닮으셨군요"
                         resultImage ="b"
                         break;
                     case "김진우":
-                        resultMessage="김진우을 닮으셨군요"
+                        resultMessage="당신은 김진우을 닮으셨군요"
                         resultImage ="jinwoo"
                         break;
                     case "정국":
-                        resultMessage="정국을 닮으셨군요"
+                        resultMessage="당신은 정국을 닮으셨군요"
                         resultImage ="jungguk"
                         break;
                     case "뷔":
-                        resultMessage="뷔를 닮으셨군요"
+                        resultMessage="당신은 뷔를 닮으셨군요"
                         resultImage ="v"
                         break;
                     case "이광수":
-                        resultMessage="이광수를 닮으셨군요"
+                        resultMessage="당신은 이광수를 닮으셨군요"
                         resultImage ="gwangsoo"
                         break;
                     case "송민호":
-                        resultMessage="송민호를 닮으셨군요"
+                        resultMessage="당신은 송민호를 닮으셨군요"
                         resultImage ="songminho"
                         break;
                     case "최강창민":
-                        resultMessage="최강창민을 닮으셨군요"
+                        resultMessage="당신은 최강창민을 닮으셨군요"
                         resultImage ="changmin"
                         break;
                     case "황제성":
-                        resultMessage="황제성을 닮으셨군요"
+                        resultMessage="당신은 황제성을 닮으셨군요"
                         resultImage ="jesung"
                         break;
                     case "정형돈":
-                        resultMessage="정형돈을 닮으셨군요"
+                        resultMessage="당신은 정형돈을 닮으셨군요"
                         resultImage ="hyungdon"
                         break;
                     case "택연":
-                        resultMessage="택연을 닮으셨군요"
+                        resultMessage="당신은 택연을 닮으셨군요"
                         resultImage ="ok"
                         break;
                     case "정우성":
-                        resultMessage="정우성을 닮으셨군요"
+                        resultMessage="당신은 정우성을 닮으셨군요"
                         resultImage ="woosung"
                         break;
                     case "공유":
-                        resultMessage="공유를 닮으셨군요"
+                        resultMessage="당신은 공유를 닮으셨군요"
                         resultImage ="gongyoo"
                         break;
                     case "박보검":
-                        resultMessage="박보검을 닮으셨군요"
+                        resultMessage="당신은 박보검을 닮으셨군요"
                         resultImage ="bokum"
                         break;
                     case "유재석":
-                        resultMessage="유재석을 닮으셨군요"
+                        resultMessage="당신은 유재석을 닮으셨군요"
                         resultImage ="jaesuk"                       
                         break;
                     case "조세호":
-                        resultMessage="조세호를 닮으셨군요"
+                        resultMessage="당신은 조세호를 닮으셨군요"
                         resultImage ="seho"
                         break;
                     case "하하":
-                        resultMessage="하하를 닮으셨군요"
+                        resultMessage="당신은 하하를 닮으셨군요"
                         resultImage ="haha"
                         break;
                     case "이정재":
-                        resultMessage="이정재를 닮으셨군요"
+                        resultMessage="당신은 이정재를 닮으셨군요"
                         resultImage ="jungjae"
                         break;
                     case "은지원":
-                        resultMessage="은지원을 닮으셨군요"
+                        resultMessage="당신은 은지원을 닮으셨군요"
                         resultImage ="jiwon"
                         break;
                     case "민호":
-                        resultMessage="민호를 닮으셨군요"
+                        resultMessage="당신은 민호를 닮으셨군요"
                         resultImage ="minho"
                         break;
                     case "강호동":
-                        resultMessage="강호동을 닮으셨군요"
+                        resultMessage="당신은 강호동을 닮으셨군요"
                         resultImage ="hodong"
                         break;    
                     default:
@@ -339,9 +356,10 @@
                 $('.result-message').html(resultMessage)
                 $('.result-image').attr("src", "celebimg/"+resultImage+".jpg");
                 $('.file-upload-image').hide();
-                for (let i = 1; i < 3; i++) {
+                $('.progress').show();
+                for (let i = 0; i < 3; i++) {
                     const classPrediction =
-                        (i+1)+'번째로 닮은 사람은 '+prediction[i].className+'이며 비율은'+ prediction[i].probability.toFixed(2)*100+'%';
+                        prediction[i].className+": <div class='progress' style='height: 20px;'><div class='progress-bar progress-bar-striped bg-success role='progressbar' style='width:"+prediction[i].probability.toFixed(2)*100+"%' aria-valuenow='"+prediction[i].probability.toFixed(2)*100+"' aria-valuemin='0' aria-valuemax='100'>"+prediction[i].probability.toFixed(2)*100+"%</div></div>";
                     labelContainer.childNodes[i].innerHTML = classPrediction;
                     console.log(classPrediction);
                 }

@@ -139,7 +139,7 @@ body {
 }
 .title {
     font-family: NanumSquareR;
-    line-height:4.0;
+    line-height:3.0;
     text-align : center;
     color:#35465d;
 }
@@ -150,95 +150,6 @@ body {
     color:#35465d;
 }
 
-/* On screens that are 600px or less, set the background color to olive */
-@media screen and (max-width: 600px) {
-  html {
-    font-size:10px;
-  }
-    .navbar-brand{
-        font-size: 2rem;
-    }
-}
-
-input#gender {
-  display: none;
-}
-
-label {
-  cursor: pointer;
-  display: inline-block;
-  width: 90px;
-  height: 41px;
-  box-shadow: 0 0 0 8px #e5e9ea inset;
-  border-radius: 30px;
-  position: relative;
-}
-
-.knob {
-  position: absolute;
-  width: 41px;
-  top: 0;
-  left: 0;
-  height: 41px;
-  border-radius: 50%;
-  box-shadow: 0 0 0 8px #f470a7 inset;
-  background-color: #fbd4e6;
-  transition: 0.3s;
-}
-
-.knob > i {
-  position: absolute;
-  width: 4px;
-  height: 18px;
-  top: 100%;
-  background-color: #f470a7;
-  left: calc(50% - 2px);
-}
-
-.knob > i:before,
-.knob > i:after {
-  width: 6px;
-  position: absolute;
-  top: 42%;
-  content: "";
-  height: 4px;
-  background-color: #f470a7;
-}
-
-.knob > i:before {
-  left: 4px;
-}
-.knob > i:after {
-  left: -6px;
-}
-
-input:checked + label > .knob {
-  box-shadow: 0 0 0 8px #a1c6dd inset;
-  background-color: #e2ecf4;
-  transform: translateX(49px) rotate(-140deg);
-}
-
-input:checked + label > .knob > i {
-  background-color: #a1c6dd;
-}
-
-input:checked + label > .knob > i:after,
-input:checked + label > .knob > i:before {
-  background-color: #a1c6dd;
-}
-
-input:checked + label > .knob > i:after {
-  top: 14.5px;
-  width: 12px;
-  left: -7px;
-  transform: rotate(45deg);
-}
-input:checked + label > .knob > i:before {
-  top: 13px;
-  width: 12px;
-  left: 0px;
-  transform: rotate(134deg);
-}
 
 .ad-banner {
     max-width: 320px;
@@ -248,88 +159,162 @@ input:checked + label > .knob > i:before {
     text-align: left;
     height: 2rem;
 }
-.세훈-box {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 2rem;
-  border-radius: 10px;
-  width: 100%;
-  background-color: rgba(117, 204, 84, 0.2);
+
+html {
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+  font-size: 100%;
 }
-.세훈-bar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 2rem;
-  border-radius: 10px;
-  background-color: rgba(117, 204, 84, 1);
+*, *:before, *:after {
+  box-sizing: inherit;
+  margin:0;
+  padding:0;
 }
-.최강창민-box {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 2rem;
-  border-radius: 10px;
-  width: 100%;
-  background-color: rgba(117, 204, 84, 0.2);
+.mid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top:1em;
 }
-.최강창민-bar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 2rem;
-  border-radius: 10px;
-  background-color: rgba(117, 204, 84, 1);
+
+
+/* Switch starts here */
+.rocker {
+  display: inline-block;
+  position: relative;
+  /*
+  SIZE OF SWITCH
+  ==============
+  All sizes are in em - therefore
+  changing the font-size here
+  will change the size of the switch.
+  See .rocker-small below as example.
+  */
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  color: #888;
+  width: 7em;
+  height: 4em;
+  overflow: hidden;
+  border-bottom: 0.5em solid #eee;
 }
-.RM-box {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 2rem;
-  border-radius: 10px;
-  width: 100%;
-  background-color: rgba(27, 175, 234, 0.2);
+
+.rocker-small {
+  font-size: 0.75em; /* Sizes the switch */
+  margin: 1em;
 }
-.RM-bar {
+
+.rocker::before {
+  content: "";
   position: absolute;
-  top: 0;
+  top: 0.5em;
   left: 0;
-  height: 2rem;
-  border-radius: 10px;
-  background-color: rgba(27, 175, 234, 1);
+  right: 0;
+  bottom: 0;
+  background-color: #999;
+  border: 0.5em solid #eee;
+  border-bottom: 0;
 }
-.찬열-box {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 2rem;
-  border-radius: 10px;
-  width: 100%;
-  background-color: rgba(251, 176, 59, 0.2);
+
+.rocker input {
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
-.찬열-bar {
+
+.switch-left,
+.switch-right {
+  cursor: pointer;
   position: absolute;
-  top: 0;
-  left: 0;
-  height: 2rem;
-  border-radius: 10px;
-  background-color: rgba(251, 176, 59, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5em;
+  width: 3em;
+  transition: 0.2s;
 }
-.bear-box {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 2rem;
-  border-radius: 10px;
-  width: 100%;
-  background-color: rgba(195, 140, 102, 0.2);
+
+.switch-left {
+  height: 2.4em;
+  width: 2.75em;
+  left: 0.85em;
+  bottom: 0.4em;
+  background-color: #ddd;
+  transform: rotate(15deg) skewX(15deg);
 }
-.bear-bar {
+
+.switch-right {
+  right: 0.5em;
+  bottom: 0;
+  background-color: #bd5757;
+  color: #fff;
+}
+
+.switch-left::before,
+.switch-right::before {
+  content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  height: 2rem;
-  border-radius: 10px;
-  background-color: rgba(195, 140, 102, 1);
+  width: 0.4em;
+  height: 2.45em;
+  bottom: -0.45em;
+  background-color: #ccc;
+  transform: skewY(-65deg);
+}
+
+.switch-left::before {
+  left: -0.4em;
+}
+
+.switch-right::before {
+  right: -0.375em;
+  background-color: transparent;
+  transform: skewY(65deg);
+}
+
+input:checked + .switch-left {
+  background-color: #0084d0;
+  color: #fff;
+  bottom: 0px;
+  left: 0.5em;
+  height: 2.5em;
+  width: 3em;
+  transform: rotate(0deg) skewX(0deg);
+}
+
+input:checked + .switch-left::before {
+  background-color: transparent;
+  width: 3.0833em;
+}
+
+input:checked + .switch-left + .switch-right {
+  background-color: #ddd;
+  color: #888;
+  bottom: 0.4em;
+  right: 0.8em;
+  height: 2.4em;
+  width: 2.75em;
+  transform: rotate(-15deg) skewX(-15deg);
+}
+
+input:checked + .switch-left + .switch-right::before {
+  background-color: #ccc;
+}
+
+/* Keyboard Users */
+input:focus + .switch-left {
+  color: #333;
+}
+
+input:checked:focus + .switch-left {
+  color: #fff;
+}
+
+input:focus + .switch-left + .switch-right {
+  color: #fff;
+}
+
+input:checked:focus + .switch-left + .switch-right {
+  color: #333;
 }

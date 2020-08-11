@@ -65,14 +65,14 @@
             <h2 class="subtitle">나와 닮은 연예인은?</h2>
         </section>
         <section>
-            <h5 class = "subtitle">
+            <h5 class="subtitle">
                 성별을 선택해주세요
             </h5>
             <div class="mid">
                 <label class="rocker">
                     <input type="checkbox" id="gender" checked />
-                    <span class="switch-left" >남자</span>
-                    <span class="switch-right" >여자</span>
+                    <span class="switch-left">남자</span>
+                    <span class="switch-right">여자</span>
                 </label>
             </div>
         </section>
@@ -94,7 +94,7 @@
             </div>
             <div class="file-upload-content">
                 <img class="file-upload-image" id="face-image" src="#" alt="your image" />
-                <div id="loading" class="animated bounce">
+                <div id="loader" class="animated bounce loader">
                     <div class="spinner" role="status">
                         <span class="sr-only">Loading...</span>
                     </div>
@@ -150,8 +150,7 @@
 
                     reader.onload = function (e) {
                         $('.image-upload-wrap').hide();
-                        $('.progress').hide();
-                        $('#loading').show();
+                        $('#loader').show();
                         $('#myDoughnutChart').hide();
                         $('.file-upload-image').attr('src', e.target.result);
                         $('.file-upload-content').show();
@@ -160,7 +159,7 @@
                     reader.readAsDataURL(input.files[0]);
                     init().then(function () {
                         predict();
-                        $('#loading').hide();
+                        $('#loader').hide();
                     });
                 } else {
                     removeUpload();
@@ -184,15 +183,17 @@
             // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
 
             // the link to your model provided by Teachable Machine export panel
-            const URL = 'https://teachablemachine.withgoogle.com/models/8Ww6uC_Yf/';
+            const urlMan = 'https://teachablemachine.withgoogle.com/models/8Ww6uC_Yf/';
+            const urlWoman = 'https://teachablemachine.withgoogle.com/models/8Ww6uC_Yf/';
             let model, labelContainer, maxPredictions;
 
             // Load the image model and setup the webcam
             async function init() {
-                if (document.getElementById("gender").checked) {
-                    console.log('남자');
+                if (document.getElementById('gender').checked) {
+                    URL = urlMan;
                 } else {
-                    console.log("여자");
+                    console.log('여자');
+                    URL = urlWoman;
                 }
                 const modelURL = URL + 'model.json';
                 const metadataURL = URL + 'metadata.json';
@@ -218,165 +219,168 @@
                 console.log(prediction[0].className);
                 var resultMessage;
                 var resultImage;
-                switch (prediction[0].className) {
-                    case '김희철':
-                        resultMessage = '당신은 김희철을 닮으셨군요';
-                        resultImage = 'heechul';
-                        break;
-                    case 'RM':
-                        resultMessage = '당신은 RM을 닮으셨군요';
-                        resultImage = 'rm';
-                        break;
-                    case '장동건':
-                        resultMessage = '당신은 장동건을 닮으셨군요';
-                        resultImage = 'donggun';
-                        break;
-                    case '김우빈':
-                        resultMessage = '당신은 김우빈을 닮으셨군요';
-                        resultImage = 'woobin';
-                        break;
-                    case '슈가':
-                        resultMessage = '당신은 슈가를 닮으셨군요';
-                        resultImage = 'sugar';
-                        break;
-                    case '강승윤':
-                        resultMessage = '당신은 강승윤을 닮으셨군요';
-                        resultImage = 'seungyoon';
-                        break;
-                    case '노홍철':
-                        resultMessage = '당신은 노홍철을 닮으셨군요';
-                        resultImage = 'hongchul';
-                        break;
-                    case '유노윤호':
-                        resultMessage = '당신은 유노윤호를 닮으셨군요';
-                        resultImage = 'unow';
-                        break;
-                    case '제이홉':
-                        resultMessage = '당신은 제이홉을 닮으셨군요';
-                        resultImage = 'jhop';
-                        break;
-                    case '헨리':
-                        resultMessage = '당신은 헨리를 닮으셨군요';
-                        resultImage = 'henry';
-                        break;
-                    case '지민':
-                        resultMessage = '당신은 지민을 닮으셨군요';
-                        resultImage = 'jimin';
-                        break;
-                    case '닉쿤':
-                        resultMessage = '당신은 닉쿤을 닮으셨군요';
-                        resultImage = 'khun';
-                        break;
-                    case '지드래곤':
-                        resultMessage = '당신은 지드래곤을 닮으셨군요';
-                        resultImage = 'gd';
-                        break;
-                    case '규현':
-                        resultMessage = '당신은 규현을 닮으셨군요';
-                        resultImage = 'kyuhyun';
-                        break;
-                    case '찬열':
-                        resultMessage = '당신은 찬열을 닮으셨군요';
-                        resultImage = 'chanyeol';
-                        break;
-                    case '바비':
-                        resultMessage = '당신은 바비를 닮으셨군요';
-                        resultImage = 'bobby';
-                        break;
-                    case '준호':
-                        resultMessage = '당신은 준호를 닮으셨군요';
-                        resultImage = 'junho';
-                        break;
-                    case '세훈':
-                        resultMessage = '당신은 세훈을 닮으셨군요';
-                        resultImage = 'sehun';
-                        break;
-                    case '비':
-                        resultMessage = '당신은 비를 닮으셨군요';
-                        resultImage = 'b';
-                        break;
-                    case '김진우':
-                        resultMessage = '당신은 김진우을 닮으셨군요';
-                        resultImage = 'jinwoo';
-                        break;
-                    case '정국':
-                        resultMessage = '당신은 정국을 닮으셨군요';
-                        resultImage = 'jungguk';
-                        break;
-                    case '뷔':
-                        resultMessage = '당신은 뷔를 닮으셨군요';
-                        resultImage = 'v';
-                        break;
-                    case '이광수':
-                        resultMessage = '당신은 이광수를 닮으셨군요';
-                        resultImage = 'gwangsoo';
-                        break;
-                    case '송민호':
-                        resultMessage = '당신은 송민호를 닮으셨군요';
-                        resultImage = 'songminho';
-                        break;
-                    case '최강창민':
-                        resultMessage = '당신은 최강창민을 닮으셨군요';
-                        resultImage = 'changmin';
-                        break;
-                    case '황제성':
-                        resultMessage = '당신은 황제성을 닮으셨군요';
-                        resultImage = 'jesung';
-                        break;
-                    case '정형돈':
-                        resultMessage = '당신은 정형돈을 닮으셨군요';
-                        resultImage = 'hyungdon';
-                        break;
-                    case '택연':
-                        resultMessage = '당신은 택연을 닮으셨군요';
-                        resultImage = 'ok';
-                        break;
-                    case '정우성':
-                        resultMessage = '당신은 정우성을 닮으셨군요';
-                        resultImage = 'woosung';
-                        break;
-                    case '공유':
-                        resultMessage = '당신은 공유를 닮으셨군요';
-                        resultImage = 'gongyoo';
-                        break;
-                    case '박보검':
-                        resultMessage = '당신은 박보검을 닮으셨군요';
-                        resultImage = 'bokum';
-                        break;
-                    case '유재석':
-                        resultMessage = '당신은 유재석을 닮으셨군요';
-                        resultImage = 'jaesuk';
-                        break;
-                    case '조세호':
-                        resultMessage = '당신은 조세호를 닮으셨군요';
-                        resultImage = 'seho';
-                        break;
-                    case '하하':
-                        resultMessage = '당신은 하하를 닮으셨군요';
-                        resultImage = 'haha';
-                        break;
-                    case '이정재':
-                        resultMessage = '당신은 이정재를 닮으셨군요';
-                        resultImage = 'jungjae';
-                        break;
-                    case '은지원':
-                        resultMessage = '당신은 은지원을 닮으셨군요';
-                        resultImage = 'jiwon';
-                        break;
-                    case '민호':
-                        resultMessage = '당신은 민호를 닮으셨군요';
-                        resultImage = 'minho';
-                        break;
-                    case '강호동':
-                        resultMessage = '당신은 강호동을 닮으셨군요';
-                        resultImage = 'hodong';
-                        break;
-                    default:
-                        resultMessage = '알수 없음';
+                if (document.getElementById('gender').checked) {
+                    switch (prediction[0].className) {
+                        case '김희철':
+                            resultMessage = '당신은 김희철을 닮으셨군요';
+                            resultImage = 'heechul';
+                            break;
+                        case 'RM':
+                            resultMessage = '당신은 RM을 닮으셨군요';
+                            resultImage = 'rm';
+                            break;
+                        case '장동건':
+                            resultMessage = '당신은 장동건을 닮으셨군요';
+                            resultImage = 'donggun';
+                            break;
+                        case '김우빈':
+                            resultMessage = '당신은 김우빈을 닮으셨군요';
+                            resultImage = 'woobin';
+                            break;
+                        case '슈가':
+                            resultMessage = '당신은 슈가를 닮으셨군요';
+                            resultImage = 'sugar';
+                            break;
+                        case '강승윤':
+                            resultMessage = '당신은 강승윤을 닮으셨군요';
+                            resultImage = 'seungyoon';
+                            break;
+                        case '노홍철':
+                            resultMessage = '당신은 노홍철을 닮으셨군요';
+                            resultImage = 'hongchul';
+                            break;
+                        case '유노윤호':
+                            resultMessage = '당신은 유노윤호를 닮으셨군요';
+                            resultImage = 'unow';
+                            break;
+                        case '제이홉':
+                            resultMessage = '당신은 제이홉을 닮으셨군요';
+                            resultImage = 'jhop';
+                            break;
+                        case '헨리':
+                            resultMessage = '당신은 헨리를 닮으셨군요';
+                            resultImage = 'henry';
+                            break;
+                        case '지민':
+                            resultMessage = '당신은 지민을 닮으셨군요';
+                            resultImage = 'jimin';
+                            break;
+                        case '닉쿤':
+                            resultMessage = '당신은 닉쿤을 닮으셨군요';
+                            resultImage = 'khun';
+                            break;
+                        case '지드래곤':
+                            resultMessage = '당신은 지드래곤을 닮으셨군요';
+                            resultImage = 'gd';
+                            break;
+                        case '규현':
+                            resultMessage = '당신은 규현을 닮으셨군요';
+                            resultImage = 'kyuhyun';
+                            break;
+                        case '찬열':
+                            resultMessage = '당신은 찬열을 닮으셨군요';
+                            resultImage = 'chanyeol';
+                            break;
+                        case '바비':
+                            resultMessage = '당신은 바비를 닮으셨군요';
+                            resultImage = 'bobby';
+                            break;
+                        case '준호':
+                            resultMessage = '당신은 준호를 닮으셨군요';
+                            resultImage = 'junho';
+                            break;
+                        case '세훈':
+                            resultMessage = '당신은 세훈을 닮으셨군요';
+                            resultImage = 'sehun';
+                            break;
+                        case '비':
+                            resultMessage = '당신은 비를 닮으셨군요';
+                            resultImage = 'b';
+                            break;
+                        case '김진우':
+                            resultMessage = '당신은 김진우을 닮으셨군요';
+                            resultImage = 'jinwoo';
+                            break;
+                        case '정국':
+                            resultMessage = '당신은 정국을 닮으셨군요';
+                            resultImage = 'jungguk';
+                            break;
+                        case '뷔':
+                            resultMessage = '당신은 뷔를 닮으셨군요';
+                            resultImage = 'v';
+                            break;
+                        case '이광수':
+                            resultMessage = '당신은 이광수를 닮으셨군요';
+                            resultImage = 'gwangsoo';
+                            break;
+                        case '송민호':
+                            resultMessage = '당신은 송민호를 닮으셨군요';
+                            resultImage = 'songminho';
+                            break;
+                        case '최강창민':
+                            resultMessage = '당신은 최강창민을 닮으셨군요';
+                            resultImage = 'changmin';
+                            break;
+                        case '황제성':
+                            resultMessage = '당신은 황제성을 닮으셨군요';
+                            resultImage = 'jesung';
+                            break;
+                        case '정형돈':
+                            resultMessage = '당신은 정형돈을 닮으셨군요';
+                            resultImage = 'hyungdon';
+                            break;
+                        case '택연':
+                            resultMessage = '당신은 택연을 닮으셨군요';
+                            resultImage = 'ok';
+                            break;
+                        case '정우성':
+                            resultMessage = '당신은 정우성을 닮으셨군요';
+                            resultImage = 'woosung';
+                            break;
+                        case '공유':
+                            resultMessage = '당신은 공유를 닮으셨군요';
+                            resultImage = 'gongyoo';
+                            break;
+                        case '박보검':
+                            resultMessage = '당신은 박보검을 닮으셨군요';
+                            resultImage = 'bokum';
+                            break;
+                        case '유재석':
+                            resultMessage = '당신은 유재석을 닮으셨군요';
+                            resultImage = 'jaesuk';
+                            break;
+                        case '조세호':
+                            resultMessage = '당신은 조세호를 닮으셨군요';
+                            resultImage = 'seho';
+                            break;
+                        case '하하':
+                            resultMessage = '당신은 하하를 닮으셨군요';
+                            resultImage = 'haha';
+                            break;
+                        case '이정재':
+                            resultMessage = '당신은 이정재를 닮으셨군요';
+                            resultImage = 'jungjae';
+                            break;
+                        case '은지원':
+                            resultMessage = '당신은 은지원을 닮으셨군요';
+                            resultImage = 'jiwon';
+                            break;
+                        case '민호':
+                            resultMessage = '당신은 민호를 닮으셨군요';
+                            resultImage = 'minho';
+                            break;
+                        case '강호동':
+                            resultMessage = '당신은 강호동을 닮으셨군요';
+                            resultImage = 'hodong';
+                            break;
+                        default:
+                            resultMessage = '알수 없음';
+                    }
+                } else {
+                    console.log("error");
                 }
                 $('.result-image').attr('src', 'celebimg/' + resultImage + '.jpg');
                 $('.file-upload-image').hide();
-                $('.progress').show();
                 $('#myDoughnutChart').show();
                 new Chart(document.getElementById('myDoughnutChart'), {
                     type: 'doughnut',

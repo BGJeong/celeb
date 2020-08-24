@@ -58,7 +58,7 @@ body {
 }
 
 .image-upload-wrap {
-  margin-top: 20px;
+  margin-top: 0px;
   border: 1.5px dashed #35465d;
   position: relative;
   object-fit:contain;
@@ -190,7 +190,7 @@ html {
   will change the size of the switch.
   See .rocker-small below as example.
   */
-  font-size: 1.5em;
+  font-size: 1.1em;
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
